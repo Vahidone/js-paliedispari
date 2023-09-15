@@ -1,6 +1,6 @@
 
 // // **********************************************************************************************
-// ESERCIZIO N2 ==>>>   PALINDROMA   <<<==
+// ESERCIZIO N1 ==>>>   PALINDROMA   <<<==
 // *************************************************************************************************
 
 
@@ -54,12 +54,10 @@ const stampaRisultato = document.getElementById('stampa-risultato');
 const bottonVerifica = document.getElementById('button-verifica');
 const bottoneReset = document.querySelector('.btn-annulla');
 
-function isPari(numero) {
-  return numero % 2 === 0;
-}
+
 // punto 3
 bottonVerifica.addEventListener('click', function () {
-  const inputWord = document.querySelector('.input-word').value; 
+  const insertWord = document.querySelector('.insert-word').value; 
   const inputNumber = parseInt(document.querySelector('.input-number').value);
 // punto 4 
   if (isNaN(inputNumber) || inputNumber < 1 || inputNumber > 5) {
@@ -69,19 +67,26 @@ bottonVerifica.addEventListener('click', function () {
     const somma = inputNumber + numeroCasuale;
     const risultato = isPari(somma) ? 'pari' : 'dispari';
 
+    function isPari(numero) {
+      return numero % 2 === 0;
+    }
+
     rispostaPc.textContent = `Il computer ha scelto ${numeroCasuale}. La somma del numero scelto da te e quello generato dal pc è ${somma}, che è un numero ${risultato}.`;
 // punto 5
-    if (inputWord === 'pari' && risultato === 'pari') { 
+    if (insertWord === risultato) { 
       stampaRisultato.textContent = 'Hai vinto!';
     } else {
       stampaRisultato.textContent = 'Hai perso!';
     }
   }
 });
+
+
+
 // punto 6
 bottoneReset.addEventListener('click', function () {
-  document.querySelector('.input-word').value = '';
   document.querySelector('.input-number').value = '';
+  document.querySelector('.insert-word').value = '';
   document.querySelector('.risposta-pc').textContent = '';
   document.getElementById('stampa-risultato').textContent = '';
 });
