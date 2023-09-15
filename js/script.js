@@ -25,12 +25,16 @@ function verifyWord() {
 // punto 5
 btnVerify.addEventListener('click', function() {
   verifyWord();
+  const verifyAudio = document.querySelector('.verify-audio');
+  verifyAudio.play();
 });
 
 // punto 6
 btnReset.addEventListener('click', function() {
   printPlace.textContent = '';
   inputWord.value = '';
+  const resetAudio = document.querySelector('.reset-audio');
+  resetAudio.play();
 });
 
 
@@ -50,7 +54,8 @@ const numberInput = document.querySelector('.input-number');
 // punto 3
 bottonVerifica.addEventListener('click', function() {
   const inputNumber = parseInt(numberInput.value);
-
+  const verifyAudio = document.querySelector('.verify-audio');
+  verifyAudio.play();
 
 // punto 4
   if (isNaN(inputNumber) || inputNumber < 1 || inputNumber > 5) {
@@ -81,6 +86,8 @@ bottoneReset.addEventListener('click', function() {
   wordInput.value = '';
   rispostaPc.textContent = '';
   stampaRisultato.textContent = '';
+  const resetAudio = document.querySelector('.reset-audio');
+  resetAudio.play();
 });
 
 function isPari(numero) {
