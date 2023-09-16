@@ -18,8 +18,8 @@ function verifyWord() {
   const isPalindrome = userWord === reversedWord;
   // punto 4
   const message = isPalindrome
-    ? `La parola ${userWord} è una palindroma`
-    : `La parola ${userWord} NON è una palindroma`;
+    ? `La parola ${userWord} è palindroma`
+    : `La parola ${userWord} NON è palindroma`;
 
   printPlace.textContent = message;
 }
@@ -32,6 +32,8 @@ btnVerify.addEventListener('click', bottonVerificaAzione);
 btnReset.addEventListener('click', bottonResetAzione);
 
 // le funzioni ------------------------- 
+
+
 
 /**
  * 
