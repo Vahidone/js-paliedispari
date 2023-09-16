@@ -9,6 +9,8 @@ const printPlace = document.getElementById('print-result');
 const btnVerify = document.getElementById('button-addon2');
 const btnReset = document.querySelector('.btn-reset');
 
+// le funzioni ---------- 
+
 // punto 3
 function verifyWord() {
   const userWord = inputWord.value;
@@ -22,53 +24,67 @@ function verifyWord() {
   printPlace.textContent = message;
 }
 
+
 // punto 5
-btnVerify.addEventListener('click', function() {
+btnVerify.addEventListener('click', bottonVerificaAzione);
+
+// punto 6
+btnReset.addEventListener('click', bottonResetAzione);
+
+// le funzioni ------------------------- 
+function bottonVerificaAzione () {
   verifyWord();
   const verifyAudio = document.querySelector('.verify-audio');
   verifyAudio.play();
-});
+}
 
-// punto 6
-btnReset.addEventListener('click', function() {
+function bottonResetAzione (){
   printPlace.textContent = '';
   inputWord.value = '';
   const resetAudio = document.querySelector('.reset-audio');
   resetAudio.play();
-});
+}
 
 
 // // **********************************************************************************************
 // ESERCIZIO ==>>>   PARI E DISPARI   <<<==
 // *************************************************************************************************
 
-
-// punto  2 
-const rispostaPc = document.querySelector('.risposta-pc');
-const stampaRisultato = document.getElementById('stampa-risultato');
-const bottonVerifica = document.getElementById('button-verifica');
-const bottoneReset = document.querySelector('.btn-annulla');
+// punto 2
 const wordInput = document.querySelector('.insert-word');
 const numberInput = document.querySelector('.input-number');
+const stampaRisultato = document.getElementById('stampa-risultato');
+const rispostaPc = document.querySelector('.risposta-pc');
+const bottoneReset = document.querySelector('.btn-annulla');
+const bottonVerifica = document.getElementById('button-verifica');
+
+// i bottoni 
+bottonVerifica.addEventListener('click', verifyActionBtn);
+bottoneReset.addEventListener('click', resetActionBtn);
+
+
+// le FUNZIONI -----------------
 
 // punto 3
-bottonVerifica.addEventListener('click', function() {
+function verifyActionBtn() {
+
   const inputNumber = parseInt(numberInput.value);
+
   const verifyAudio = document.querySelector('.verify-audio');
   verifyAudio.play();
 
-// punto 4
+  // punto 4
   if (isNaN(inputNumber) || inputNumber < 1 || inputNumber > 5) {
-    rispostaPc.textContent = 'Inserisci un numero da 1 a 5.';
+    stampaRisultato.textContent = 'Inserisci un numero da 1 a 5.';
   } else {
-    const numeroCasuale = Math.floor(Math.random() * 5) + 1;
-    const somma = inputNumber + numeroCasuale;
+    const numeroCasuale = generaNumeroRandom(1, 5);
+    const somma = inputNumber + numeroCasuale; 
     const risultato = isPari(somma);
 
-    rispostaPc.textContent = `Il computer ha scelto ${numeroCasuale}. La somma è ${somma}, che è un numero ${risultato}.`;
+    rispostaPc.textContent = `Il computer ha scelto ${numeroCasuale}. La somma è 
+    ${somma}, che è un numero ${risultato}.`;
 
-  
-   // punto 5
+    // punto 5
     if (wordInput.value === risultato) {
       stampaRisultato.textContent = 'Hai vintooooooo! :)';
       const winAudio = document.getElementById('win-audio');
@@ -79,17 +95,34 @@ bottonVerifica.addEventListener('click', function() {
       lostAudio.play();
     }
   }
-});
-  // punto  6 
-bottoneReset.addEventListener('click', function() {
-  numberInput.value = '';
-  wordInput.value = '';
-  rispostaPc.textContent = '';
-  stampaRisultato.textContent = '';
-  const resetAudio = document.querySelector('.reset-audio');
-  resetAudio.play();
-});
+}
+
+function generaNumeroRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function isPari(numero) {
   return numero % 2 === 0 ? 'pari' : 'dispari';
 }
+
+// punto 6
+function resetActionBtn() {
+  const numberInput = document.querySelector('.input-number');
+  const wordInput = document.querySelector('.insert-word');
+  const stampaRisultato = document.getElementById('stampa-risultato');
+  
+  numberInput.value = '';
+  wordInput.value = '';
+  stampaRisultato.textContent = '';
+  const resetAudio = document.querySelector('.reset-audio');
+  resetAudio.play();
+}
+
+
+
+
+
+
+
+
+
