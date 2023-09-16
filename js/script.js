@@ -14,7 +14,7 @@ const btnReset = document.querySelector('.btn-reset');
 // punto 3
 function verifyWord() {
   const userWord = inputWord.value;
-  const reversedWord = userWord.split('').reverse().join('');
+  const reversedWord = invertiNumero(userWord);
   const isPalindrome = userWord === reversedWord;
   // punto 4
   const message = isPalindrome
@@ -32,6 +32,15 @@ btnVerify.addEventListener('click', bottonVerificaAzione);
 btnReset.addEventListener('click', bottonResetAzione);
 
 // le funzioni ------------------------- 
+
+/**
+ * 
+ * @param {parola} parola 
+ * @returns 
+ */
+function invertiNumero (parola){
+  return parola.split('').reverse().join('');
+}
 function bottonVerificaAzione () {
   verifyWord();
   const verifyAudio = document.querySelector('.verify-audio');
