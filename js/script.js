@@ -80,14 +80,20 @@ bottoneReset.addEventListener('click', resetActionBtn);
 function verifyActionBtn() {
 
   const inputNumber = parseInt(numberInput.value);
-
+  const parolaUtente = wordInput.value.toLowerCase();
   const verifyAudio = document.querySelector('.verify-audio');
   verifyAudio.play();
 
   // punto 4
   if (isNaN(inputNumber) || inputNumber < 1 || inputNumber > 5) {
-    stampaRisultato.textContent = 'Inserisci un numero da 1 a 5.';
-  } else {
+    rispostaPc.textContent = 'Inserisci un numero da 1 a 5.';
+
+  } else if (parolaUtente != 'pari' && parolaUtente != 'dispari') {
+    rispostaPc.textContent = 'inserisci pari o dispari';
+  }
+  
+  
+  else {
     const numeroCasuale = generaNumeroRandom(1, 5);
     const somma = inputNumber + numeroCasuale; 
     const risultato = isPari(somma);
@@ -122,6 +128,7 @@ function resetActionBtn() {
   const wordInput = document.querySelector('.insert-word');
   const stampaRisultato = document.getElementById('stampa-risultato');
   
+  rispostaPc.textContent = '';
   numberInput.value = '';
   wordInput.value = '';
   stampaRisultato.textContent = '';
