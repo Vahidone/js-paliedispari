@@ -98,7 +98,7 @@ function verifyActionBtn() {
     const somma = inputNumber + numeroCasuale; 
     const risultato = isPari(somma);
 
-    rispostaPc.textContent = `Il computer ha scelto ${numeroCasuale}. La somma è 
+    rispostaPc.textContent = `Il computer ha scelto ${numeroCasuale}. La somma del tuo numero e quello del computer è 
     ${somma}, che è un numero ${risultato}.`;
 
     // punto 5
